@@ -1,99 +1,95 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Aula7
 {
     class Program
     {
-        static void Main(string[] args){
-            class Funcionario
+        static void Main(string[] args)
         {
-            private string nome;
-            private int matricula;
-            public float salario;
+            Departamento d = new Departamento();
 
-            public Funcionario(string nome)
-            {
-                this.nome = nome;
-            }
+            d.nome = "vendas";
+            d.adicionaFunc("Felipe", "8912345", 223);
+            d.adicionaFunc("Laura", "1234567", 722);
 
-            public Funcionario()
-            {
-            }
+            d.imprimeDepartamento();
 
-            public Funcionario(string nome, int matricula, float salario)
-            {
-                this.nome = nome;
-                this.matricula = matricula;
-                this.salario = salario;
-            }
-
-            public string getNome()
-            {
-                return this.nome;
-            }
-
-            public void setNome(string nome)
-            {
-                this.nome = nome;
-            }
-
-
-            public int getMatricula()
-            {
-                return this.matricula;
-            }
-
-            public void setMatricula(int matricula)
-            {
-                this.matricula = matricula;
-            }
-
-
-            public float getSalario()
-            {
-                return this.salario;
-            }
-
-            public void setSalario(float salario)
-            {
-                this.salario = salario;
-            }
-
-            public void imprimir()
-            {
-                Console.WriteLine(this.nome + " " + this.matricula + " " + this.salario);
-            }
-
-
-        }
-
-
-        class program
-        {
-            static void Main(string[] args)
-            {
-
-                fun[] garage = {
-        new fun("Bruno", 11111, 2500.00)
-        new Fun("Fernando", 22222, 5100.00)
-                new Fun("Bruno", 33333, 9800.00)
-        }
-    
-
-        foreach (Fun Funcionario in garage)
-                {
-                    Console.WriteLine(Funcionario.name);
-                    Console.WriteLine(Funcionario.matricula);
-                    Console.WriteLine(Funcionario.salario);
-                }
-
-                Console.ReadKey();
-            }
+            Console.ReadKey();
         }
     }
+
+    /////////////////////////////////////////////////////////
+
+    class Funcionario
+    {
+        public Funcionario(string nome, string cpf, int mat)
+        {
+            this.nome = nome;
+            this.cpf = cpf;
+            this.matricula = mat;
+        }
+        private string nome;
+        private string cpf;
+        private int matricula;
+
+        public void imprimeFuncionario()
+        {
+            Console.WriteLine(this.nome + " " + this.cpf + " " + this.matricula);
+        }
+
+        public void setNome(string nome)
+        {
+            this.nome = nome;
+        }
+        public void setCpf(string cpf)
+        {
+            this.cpf = cpf;
+        }
+        public void setNome(int mat)
+        {
+            this.matricula = mat;
+        }
+
+        public string getNome()
+        {
+            return this.nome;
+        }
+        public string getCpf()
+        {
+            return this.nome;
+        }
+        public int getMat()
+        {
+            return this.matricula;
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    class Departamento
+    {
+        public string nome;
+        ArrayList funcionarios = new ArrayList();
+
+        public void adicionaFunc(string nome, string cpf, int mat)
+        {
+            Funcionario f = new Funcionario(nome, cpf, mat);
+
+            this.funcionarios.Add(f);
+        }
+
+
+        public void imprimeDepartamento()
+        {
+            foreach (Funcionario f in funcionarios)
+            {
+                f.imprimeFuncionario();
+            }
+        }
     }
 }
