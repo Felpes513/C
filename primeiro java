@@ -1,0 +1,49 @@
+package mypocket;
+
+import java.util.Arrays;
+
+public class Aluno {
+	public Aluno(String nome, int codmat, String cpf, char sexo, double notaP1, double notaP2, double notaP3) {
+		super();
+		this.nome = nome;
+		this.codmat = codmat;
+		this.cpf = cpf;
+		this.sexo = sexo;
+		this.notaP1 = notaP1;
+		this.notaP2 = notaP2;
+		this.notaP3 = notaP3;
+	}
+	public String nome;
+	public int codmat;
+	public String cpf;
+	public char sexo;
+	public double notaP1;
+	public double notaP2;
+	public double notaP3;
+}
+public void imprime_aluno(){
+	System.out.println("Nome:" + this.nome);
+	System.out.println("Codigo de matricula: " + this.codmat);
+	System.out.println("Sexo:" + this.sexo);
+	System.out.println("CPF:" + this.cpf);
+	System.out.println("NotaP1:" + this.notaP1);
+	System.out.println("NotaP2:" + this.notaP2);
+	System.out.println("NotaP3:" + this.notaP3);
+}
+public void Imprime_Sexo() {
+	if(this.sexo == 'M')
+		System.out.println("Masculino");
+		else
+			System.out.println("Feminino");
+	
+	System.out.println("Nome: " + this.nome);
+}
+public double Media_Aluno() {
+	double[] tabNotas = new double[3];
+	tabNotas[0] = this.notaP1;
+	tabNotas[1] = this.notaP2;
+	tabNotas[2] = this.notaP3;
+	
+	Arrays.sort(tabNotas);
+	return (tabNotas[1] + tabNotas[2] / 2.0);
+}
